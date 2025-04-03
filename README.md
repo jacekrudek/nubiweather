@@ -1,6 +1,7 @@
 # nubiweather
 
 **Fullstack web app for displaying weather forecast for cities: Gliwice & Hamburg. Created with [expressjs](https://expressjs.com/) and [react](https://react.dev/)**.
+
 The backend communicates with [weatherapi](https://www.weatherapi.com/) and sends data to the frontend app which displays it for the user. The information displayed consist of current weather status and forecast for the next 3 days.
 
 # Development
