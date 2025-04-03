@@ -1,6 +1,12 @@
+.weather-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .weather-container {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 200px;
 }
@@ -21,12 +27,13 @@
 .name-area {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .weather-icon {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
 }
 
@@ -44,3 +51,33 @@
     list-style: none;
 }
 
+.city-area {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
+.country-name {
+    margin: 0;
+    font-size: 20px;
+    color: rgb(163, 163, 163);
+}
+
+.forecast-list {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.forecast-icon {
+    margin: 0;
+}
+
+
+.week-day, .forecast-temp {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
