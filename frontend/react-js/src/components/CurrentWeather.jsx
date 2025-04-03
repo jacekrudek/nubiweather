@@ -32,7 +32,7 @@ const CurrentWeather = ({ city }) => {
     };
 
     fetchWeather();
-  }, [city]);
+  }, []);
 
   if (!weatherData) {
     return <h1>Loading...</h1>;

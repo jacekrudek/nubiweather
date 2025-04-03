@@ -25,14 +25,12 @@ const WeatherForecast = ({ city, days }) => {
         );
         const data = await response.json();
 
-        const formattedData = data.data.forecast.forecastday
-          .slice(0, days) // Limit the array to the number of days
-          .map((day) => ({
-            date_epoch: day.date_epoch,
-            temperature: day.day.avgtemp_c,
-            condition_text: day.day.condition.text,
-            condition_icon: `https:${day.day.condition.icon}`,
-          }));
+        const formattedData = data.data.forecast.forecastday.map((day) => ({
+          date_epoch: day.date_epoch,
+          temperature: day.day.avgtemp_c,
+          condition_text: day.day.condition.text,
+          condition_icon: `https:${day.day.condition.icon}`,
+        }));
 
         setForecastData(formattedData);
       } catch (error) {
@@ -41,7 +39,7 @@ const WeatherForecast = ({ city, days }) => {
     };
 
     fetchWeather();
-  }, [city, days]);
+  }, []);
 
   if (forecastData.length === 0) {
     return <h1>Loading...</h1>;
