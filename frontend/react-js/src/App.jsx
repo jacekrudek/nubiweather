@@ -1,4 +1,3 @@
-import React from "react";
 import CurrentWeather from "./components/CurrentWeather";
 import WeatherForecast from "./components/WeatherForecast";
 import "./styles/app.css";

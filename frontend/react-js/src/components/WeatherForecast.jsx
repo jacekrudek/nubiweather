@@ -1,21 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-interface WeatherForecastProps {
-  city: string;
-  days: number;
-}
+const WeatherForecast = ({ city, days }) => {
+  const [forecastData, setForecastData] = useState([]);
 
-interface ForecastDay {
-  date_epoch: number;
-  temperature: number;
-  condition_text: string;
-  condition_icon: string;
-}
-
-const WeatherForecast: React.FC<WeatherForecastProps> = ({ city, days }) => {
-  const [forecastData, setForecastData] = useState<ForecastDay[]>([]);
-
-  const getDayOfWeek = (dateEpoch: number): string => {
+  const getDayOfWeek = (dateEpoch) => {
     const daysOfWeek = [
       "Sunday",
       "Monday",
@@ -25,7 +13,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ city, days }) => {
       "Friday",
       "Saturday",
     ];
-    const date = new Date(dateEpoch * 1000);
+    const date = new Date(dateEpoch * 1000); // Convert seconds to milliseconds
     return daysOfWeek[date.getDay()];
   };
 
@@ -37,9 +25,9 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({ city, days }) => {
         );
         const data = await response.json();
 
-        const formattedData: ForecastDay[] = data.data.forecast.forecastday
-          .slice(0, days)
-          .map((day: any) => ({
+        const formattedData = data.data.forecast.forecastday
+          .slice(0, days) // Limit the array to the number of days
+          .map((day) => ({
             date_epoch: day.date_epoch,
             temperature: day.day.avgtemp_c,
             condition_text: day.day.condition.text,

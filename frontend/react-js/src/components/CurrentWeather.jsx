@@ -1,27 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-interface CurrentWeatherProps {
-  city: string;
-}
-
-interface CurrentWeatherData {
-  location: {
-    city: string;
-    country: string;
-  };
-  current: {
-    temperature: number;
-    humidity: string;
-    cloud_cover: string;
-    condition: string;
-    condition_icon: string;
-  };
-}
-
-const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city }) => {
-  const [weatherData, setWeatherData] = useState<CurrentWeatherData | null>(
-    null
-  );
+const CurrentWeather = ({ city }) => {
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -31,7 +11,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city }) => {
         );
         const data = await response.json();
 
-        const formattedData: CurrentWeatherData = {
+        const formattedData = {
           location: {
             city: data.data.location.name,
             country: data.data.location.country,
@@ -52,7 +32,7 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({ city }) => {
     };
 
     fetchWeather();
-  }, []);
+  }, [city]);
 
   if (!weatherData) {
     return <h1>Loading...</h1>;
