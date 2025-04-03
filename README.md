@@ -29,7 +29,7 @@ npm run dev
 
 *Frontend*
 ```
-cd frontend/react-ts
+cd frontend/react-js
 npm install
 npm run dev
 ```
